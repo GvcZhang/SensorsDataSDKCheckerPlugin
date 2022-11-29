@@ -19,7 +19,16 @@ dependencies {
 group = 'com.curious.sdk.checker'
 version = '1.0.0'
 
+
+pluginBundle {  // Removed in Gradle 8+
+    website = 'https://github.com/GvcZhang/SensorsDataSDKCheckerPlugin'
+    vcsUrl = 'https://github.com/GvcZhang/SensorsDataSDKCheckerPlugin.git'
+    tags = ['SensorsData', 'Analytics']
+}
+
 gradlePlugin {
+
+
     plugins {
         sdkChecker {
             id = 'com.curious.sdk.checker'
