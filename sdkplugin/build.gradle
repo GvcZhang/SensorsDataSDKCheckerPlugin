@@ -1,0 +1,51 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+    id 'com.gradle.plugin-publish' version '1.1.0' apply true
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    api gradleApi()
+    compileOnly("com.android.tools.build:gradle-api:7.3.1")
+    compileOnly("com.android.tools.build:gradle:7.3.1")
+}
+
+
+group = 'com.curious.sdk.checker'
+version = '1.0.0'
+
+gradlePlugin {
+    plugins {
+        sdkChecker {
+            id = 'com.curious.sdk.checker'
+            implementationClass = 'com.curious.sdk.checker.sdkplugin.CheckerPlugin'
+            displayName = 'SensorsData Android SDK Chdecker'
+            description = 'A gradle plugin to check whether add SensorsData Android SDK dependency'
+        }
+    }
+}
+
+publishing {
+
+//    publications {
+//        maven(MavenPublication) {
+//            groupId = 'com.example.plugin'
+//            artifactId = 'abc'
+//            version = '1.1'
+//
+//            from components.java
+//        }
+//    }
+
+    repositories {
+        maven {
+            name = 'localPluginRepository'
+            url = '../repo'
+        }
+    }
+}
